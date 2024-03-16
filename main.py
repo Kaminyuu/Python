@@ -2214,4 +2214,243 @@
 # print(outer(5, 8, 2))
 # print(outer(1, 6, 8))
 
-print("Вносим изменения")
+# print("Вносим изменения")
+
+# print("Данные переносим на GitHub")
+
+# map(func, iterable), filter(func, iterable)
+
+# def mult(t):
+#     return t * 2
+
+
+# lst = [2, 8, 12, -5, -10]
+
+# lst2 = list(map(mult, lst))
+# lst2 = list(map(lambda t: t * 2, lst))
+
+
+# print(list(map(lambda t: t * 2, [2, 8, 12, -5, -10])))
+
+# t = (2.88, -1.75, 100.55)
+#
+# # t2 = tuple(map(lambda x: int(x), t))
+# t2 = tuple(map(int, t))
+# print(t2)
+
+# st = ['a', 'b', 'c', 'd', 'e']
+# num = [1, 2, 3, 4, 5, 6, 7]
+#
+# res = dict(map(lambda x, y: (x, y), num, st))
+# print(res)
+
+# l1 = [1, 2, 3]
+# l2 = [4, 5, 6]
+#
+# res = list(map(lambda x, y: x + y, l1, l2))
+# print(res)
+
+# def func(s):
+#     return len(s) == 3
+#
+#
+# t = ('abcd', 'abc', 'asdfg', 'def', 'ert')
+#
+# # t2 = tuple(filter(lambda s: len(s) == 3, t))
+# # t2 = tuple(filter(func, t))
+# t2 = tuple(filter(lambda s: s * 3, t))
+# print(t2)
+
+
+# b = [60, 90, 68, 59, 76, 60, 88, 74, 81, 65]
+# res = list(filter(lambda s: s > 75, b))
+# print(res)
+
+# from random import randint
+#
+# lst = [randint(1, 40) for i in range(10)]
+# print(lst)
+#
+# res = list(filter(lambda x: 10 < x < 21, lst))
+# print(res)
+
+
+# m = list(map(lambda x: x ** 2, filter(lambda x: x % 2, range(10))))
+#
+# print(m)
+#
+# m1 = [x ** 2 for x in range(10) if x % 2]
+# print(m1)
+
+
+# Декораторы
+
+# def hello():
+#     return "Hello, Iam func 'hello'"
+#
+#
+# def super_func(func):
+#     print("Hello, Iam func 'super_func'")
+#     print(func())
+#
+#
+# super_func(hello)
+
+# def hello():
+#     return "Hello, Iam func 'hello'"
+#
+#
+# test = hello
+# print(test())
+
+
+# def my_decorator(func):  # Декорирующая функция
+#     def inner():
+#         print("*" * 40)
+#         func()
+#         print("=" * 40)
+#
+#     return inner
+#
+#
+# @my_decorator  # Декоратор
+# def func_test():  # Декорируемая функция
+#     print("Hello, Iam func 'func_test'")
+#
+#
+# @my_decorator
+# def hello():
+#     print("Hello, Iam func 'hello'")
+#
+#
+# func_test()
+# hello()
+
+# def bold(fn):
+#     def wrap():
+#         return "<b>" + fn() + "</b>"
+#
+#     return wrap
+#
+#
+# def italic(fn):
+#     def wrap():
+#         return "<i>" + fn() + "</i>"
+#
+#     return wrap
+#
+#
+# @italic
+# @bold
+# def hello():
+#     return "text"
+#
+#
+# print(hello())
+
+
+# def cnt(fn):
+#     count = 0
+#
+#     def wrap():
+#         nonlocal count
+#         count += 1
+#         fn()
+#         print("Вызов функции:", count)
+#
+#     return wrap
+#
+#
+# @cnt
+# def hello():
+#     print("Hello")
+#
+#
+# hello()
+# hello()
+# hello()
+
+
+# def args_decorator(fn):
+#     def wrap(arg1, arg2):
+#         print("Данные:", arg1, arg2)
+#         fn(arg1, arg2)
+#
+#     return wrap
+#
+#
+# @args_decorator
+# def print_full_name(name, surname):
+#     print("Меня зовут", name, surname)
+#
+#
+# print_full_name("Ирина", "Ветрова")
+
+
+# def args_decorator(fn):
+#     def wrap(*args, **kwargs):
+#         print("args:", args)
+#         print("kwargs:", kwargs)
+#         fn(*args, **kwargs)
+#
+#     return wrap
+#
+#
+# @args_decorator
+# def print_full_name(a, b, c, study="Python"):
+#     print(a, b, c, "изучают", study, "\n")
+#
+#
+# print_full_name("Ирина", "Борис", "Светлана", study="JavaScript")
+# print_full_name("Владимир", "Екатерина", "Виктор")
+
+
+# def decor(args1, args2):
+#     def args_dec(fn):
+#         def wrap(x, y):
+#             print(args1, x, args2, y, "=", end=" ")
+#             fn(x, y)
+#
+#         return wrap
+#
+#     return args_dec
+#
+#
+# @decor("Сумма:", "+")
+# def summa(a, b):
+#     print(a + b)
+#
+#
+# @decor("Разность:", "-")
+# def sub(a, b):
+#     print(a - b)
+#
+#
+# @decor("Произведение:", "*")
+# def mul(a, b):
+#     print(a * b)
+#
+#
+# n = 5
+# m = 2
+# summa(n, m)
+# sub(n, m)
+# mul(n, m)
+
+
+def multiply(arg):
+    def decor(fn):
+        def wrap(*args, **kwargs):
+            return arg * fn(*args, **kwargs)
+
+        return wrap
+
+    return decor
+
+
+@multiply(3)
+def return_num(num):
+    return num
+
+
+print(return_num(5))
