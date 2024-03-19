@@ -2438,19 +2438,151 @@
 # mul(n, m)
 
 
-def multiply(arg):
-    def decor(fn):
-        def wrap(*args, **kwargs):
-            return arg * fn(*args, **kwargs)
+# def multiply(arg):
+#     def decor(fn):
+#         def wrap(*args, **kwargs):
+#             return arg * fn(*args, **kwargs)
+#
+#         return wrap
+#
+#     return decor
+#
+#
+# @multiply(3)
+# def return_num(num):
+#     return num
+#
+#
+# print(return_num(5))
 
-        return wrap
+# def avg(fn):
+#     def wrap(*args):
+#         return fn(*args) / len(args)
+#
+#     return wrap
+#
+#
+# @avg
+# def summa(*args):
+#     return sum(args)
+#
+#
+# print(summa(2, 3, 3, 4))
 
-    return decor
+# Строки
 
 
-@multiply(3)
-def return_num(num):
-    return num
+# print(0b10)
+# print(bin(18))  # 0b10010 => 0b - двоичная система
+# print(oct(18))  # 0o22 => 0o - восьмеричная
+# print(hex(18))  # 0x12 => 0x - шестнадцатеричная
+#
+# print(0b10010 + 0o22)
+# print(0o22)
+# print(0x12 + 0o22)
+
+# q = 'Pyt'
+# w = "hon"
+# e = q + w
+# print(e)  # Python => Pytton
+# # print(e * 3)
+# # print("y" in e)
+# # print("l" in e)
+# # print(e[1])
+# # print(e[-1])
+# # print(e[1:4])
+# # print(e[::-1])
+#
+# e = e[:3] + 't' + e[4:]
+# print(e)
+
+# print("Привет")
+# print(u"Привет")
+
+# print("C:\\folder\\fi\nle.txt")
+# print(r"C:\folder\fi\nle.txt")
+# print(r"C:\folder\\"[:-1])
+# print(r"C:\folder" + "\\")
+# print("C:\\folder\\")
+
+# name = "Дмитрий"
+# age = 25
+# print("Меня зовут " + name + ". Мне " + str(age) + " лет.")
+# a = f"Меня зовут {name}. Мне {age} лет."
+# print(a)
+# print(f"Число {round(12.2564, 2)}, {5 + 3}")
+# print(f"Число {12.2564:.2f}")
+
+# x = 10
+# y = 5
+# print(f"{x = }, {y = }")
+# print(f"{x} x {y} / 2 = {x * y / 2}")
 
 
-print(return_num(5))
+# dir_name = "folder"
+# file_name = "file.txt"
+# print(fr"home\{dir_name}\{file_name}")
+# print("home" + "\\" + dir_name + "\\" + file_name)
+
+
+# s = """Строка
+# символов"""
+# print(s)
+# s1 = '''Строка
+# символов'''
+# print(s1)
+# s2 = "Строка символов"
+# print(s2)
+
+# def square(n):
+#     """Принимает число n, возвращает квадрат числа n"""
+#     print("Hello")
+#     return n ** 2
+#
+#
+# print(square(5))
+
+# from math import pi
+#
+#
+# def cylinder(r, h):
+#     """
+#     Вычисляет площадь цилиндра.
+#
+#     Вычисляет площадь цилиндра на основании заданной высоты и радиуса основания
+#
+#     :param r: положительное число, радиус основания цилиндра
+#     :param h: положительное число, высота цилиндра
+#     :return: положительно число, площадь цилиндра
+#     """
+#     return 2 * pi * r * (r + h)
+
+
+# print(cylinder(2, 4))
+# # print(cylinder.__doc__)
+# print(sum.__doc__)
+# print(len.__doc__)
+# print(int.__doc__)
+# print(type.__doc__)
+
+# print(ord('a'))
+# print(ord('й'))
+
+# while True:
+#     n = input("-> ")
+#     if n != "-1":
+#         print(ord(n))
+#     else:
+#         break
+
+# st = "Test string for me"
+# arr = [ord(x) for x in st]
+# print("ASCII коды:", arr)
+# arr = [sum(arr) // len(arr)] + arr
+# print("Среднее арифметическое", arr)
+# arr += [ord(x) for x in input("-> ")[:3] if ord(x) not in arr]
+# print(arr)
+# print(arr.count(arr[-1]) - 1)
+# arr.sort(reverse=True)
+# print(arr)
+
