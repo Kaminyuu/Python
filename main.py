@@ -2716,7 +2716,8 @@
 
 # Регулярные выражения
 
-import re
+# import re
+
 
 # s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта."
 # reg = r"\."
@@ -2823,3 +2824,331 @@ import re
 # @         # @
 # [a-z.-]+  # part 2
 # """, "test@mail.ru", re.VERBOSE))
+
+
+# a = "31-01-1921"
+# pattern = r"(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19\d\d|20[0-9][0-9])"
+# print(re.findall(pattern, a))
+# print(re.search(pattern, a).group(2))
+# m = re.search(pattern, a)
+# print(m[0])
+# print(m[1])
+# print(m[2])
+# print(m[3])
+
+
+# s = "Самолет прилетает 10/23/2024. Будем рады вас видеть после 10/24/2024."  # 23.10.2024
+# reg = r"(\d{2})/(\d{2})/(\d{4})"
+# print(re.sub(reg, r"\2.\1.\3", s))
+
+# s = "yandex.com and yandex.ru"
+# reg = r"(([a-z0-9-]{2,}\.)+[a-z]{2,4})"
+# print(re.sub(reg, r"http://\1", s))
+
+# Рекурсия
+
+# def elevator(n):  # 0
+#     if n == 0:
+#         print("Вы в подвале")
+#         return
+#     print("=>", n)
+#     elevator(n - 1)  # стек: 5 4 3 2 1
+#     print(n, end=" ")
+#
+#
+# n1 = int(input("На каком вы этаже: "))  # 5
+# elevator(n1)
+
+
+# def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res += i
+#     return res
+
+# def sum_list(lst):
+#     if len(lst) == 1:
+#         print(lst, "=> lst[0]:", lst[0])
+#         return lst[0]  # 9
+#     else:
+#         print(lst, "=> lst[0]:", lst[0])
+#         return lst[0] + sum_list(lst[1:])  # 1 + 3 + 5 + 7 + 9
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))
+
+# def to_str(n, base):  # n = 354
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         return convert[n]  # covert[3] => '3'
+#     else:
+#         return to_str(n // base, base) + convert[n % base]  # convert[5] => + '5' + '4'
+#
+#
+# print(to_str(354, 10))
+
+
+# def to_str(n, base):  # n = 15
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         return convert[n]  # covert[15] => 'F'
+#     else:
+#         return to_str(n // base, base) + convert[n % base]  # convert[14] =>  + 'E'
+#
+#
+# print(to_str(254, 16))
+
+# def count_items(item_list):  # ['Adam', ["Bob", ["Chet", "Cat"], "Barb", "Bert"], 'Alex', ["Bea", "Bill"], "Ann"]
+#     count = 0  # 10
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)
+#         else:
+#             count += 1
+#     return count
+#
+#
+# names = ['Adam', ["Bob", ["Chet", "Cat"], "Barb", "Bert"], 'Alex', ["Bea", "Bill"], "Ann"]
+# print(names)
+# print(len(names))
+# # print(isinstance(names, list))
+# # print(isinstance(names[0], list))
+# # print(isinstance(names[1][1][0], list))
+# print(count_items(names))
+
+
+# def remove(text):  # " Hello\nWorld "
+#     if not text:  # text = ""
+#         return ""
+#     if text[0] == "\n" or text[0] == " ":
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])  # "HelloWorld"
+#
+#
+# print(remove(" Hello\nWorld "))
+
+# f = open("test.txt", "r")
+# f = open(r"")
+# print(f)
+# print(*f)
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+# f.close()
+# print(f.closed)
+
+# f = open("text.txt", "r")
+# print(f.read(3))
+# print(f.read())
+# f.close()
+#
+# f = open("text.txt", "r")
+# print(f.read())
+# f.close()
+
+
+# f = open("test.txt", "r")
+# print(f.readline())
+# print(f.readline(8))
+# print(f.readline())
+# print(f.readline())
+# print(f.readline())
+# f.close()
+
+# f = open("test.txt", "r")
+# print(f.readlines(16))
+# print(f.readlines())
+# f.close()
+
+
+# f = open("test.txt", "r")
+# for line in f:
+#     print(line)
+# f.close()
+
+
+# f = open("test.txt", "r")
+# count = 0
+# for line in f:
+#     print(line)
+#     count += 1
+# f.close()
+# print("count =", count)
+
+
+# f = open("test.txt", "r")
+# print("count =", len(f.readlines()))
+# f.close()
+
+# f = open("xyz.txt", "w")
+# f.write("Hello\nWorld!")
+# f.close()
+
+# f = open("xyz.txt", "a")
+# f.write("\nNew text")
+# f.close()
+
+# line = ['This is line 1\n', 'This is line 2\n']
+# f = open("xyz.txt", "w")
+# f.writelines(line)
+# f.close()
+
+
+# lst = [i for i in range(1, 20)]
+# print(lst)
+#
+# f = open("xyz.txt", "w")
+# for index in lst:
+#     f.write(str(index))
+# f.close()
+#
+# f = open("xyz.txt", "r")
+# d = f.read()
+# print(d)
+# print(type(d))
+# f.close()
+
+# lst = [i for i in range(1, 20)]
+# print(lst)
+#
+# f = open("xyz.txt", "w")
+# f.write("\t".join(map(str, lst)))
+# f.close()
+#
+# f = open("xyz.txt", "r")
+# d = f.read()
+# st = list(map(int, d.split("\t")))
+# print(st)
+# print(type(st))
+# f.close()
+
+
+# file = "text2.txt"
+#
+# f = open(file, "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;")
+# f.close()
+#
+# f = open(file, "r")
+# read_line = f.readlines()
+# f.close()
+#
+# print(read_line)
+# read_line[1] = "Hello world!\n"
+# print(read_line)
+#
+# f = open(file, "w")
+# f.writelines(read_line)
+# f.close()
+
+
+# file = "text2.txt"
+#
+# f = open(file, "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;")
+# f.close()
+#
+# f = open(file, "r")
+# s = f.readlines()
+# f.close()
+# print(s)
+#
+# pos = int(input("pos = "))
+# if 0 <= pos <= len(s):
+#     del s[pos]
+# else:
+#     print("Индекс введен неверно")
+# print(s)
+#
+# f = open(file, "w")
+# f.writelines(s)
+# f.close()
+
+# f = open("text.txt")
+# print(f.read(3))
+# print(f.tell())  # позиция условного курсора
+# print(f.seek(1)) # перемещение курсора в заданную позицию
+# print(f.read())
+# print(f.tell())
+# f.close()
+
+# f = open("text.txt", "r+")
+# f.write("I am learning Python")
+# print(f.seek(3))
+# f.write("-new string-")
+# f.close()
+
+# f = open("text.txt", "r+")
+# f.write("I am learning Python")
+# print(f.seek(3))
+# f.write("-new string-")
+# print(f.tell())
+# print(f.read())
+# f.close()
+
+# with open('test.txt', "w") as f:
+#     print(f.write('012\n34567\n89'))
+# print(f.closed)
+
+# with open('test.txt', "r") as f:
+#     for line in f:
+#         print(line[:2])
+
+
+# def longest_words(file):
+#     with open(file, "r", encoding="utf-8") as text:
+#         w = text.read().split()
+#         print(w)
+#         max_length = len(max(w, key=len))
+#         res = [word for word in w if len(word) == max_length]
+#         print(max_length)
+#         if len(res) == 1:
+#             return res[0]
+#         return res
+#
+#
+# print(longest_words('test.txt'))
+
+# one = "one.txt"
+# two = "two.txt"
+# three = "three.txt"
+
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
+#
+# with open(one, 'w') as f:
+#     f.write(text)
+
+# with open(one, "r") as fr, open(two, "w") as fw:
+#     for line in fr:
+#         line = line.replace("Строка", "Линия -")
+#         fw.write(line)
+
+
+one = "one.txt"
+two = "two.txt"
+three = "three.txt"
+#
+# with open(one, "r") as f1:
+#     a = f1.read()
+# print(a)
+#
+# with open(two, "r") as f2:
+#     b = f2.read()
+# print(b)
+#
+# c = a + b
+# print(c)
+#
+# with open(three, "w") as f3:
+#     f3.write(c)
+
+
+with open(one, "r") as f1, open(two, "r") as f2, open(three, "w") as f3:
+    a = f1.readlines()
+    b = f2.readlines()
+    c = []
+    for i in range(len(a)):
+        c.append(a[i])
+        c.append(b[i])
+    f3.writelines(c)
