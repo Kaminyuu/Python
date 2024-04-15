@@ -3472,44 +3472,503 @@
 # print(Point.count)
 
 
-class Robot:
-    k = 0
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print("Инициализация робота:", self.name)
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(self.name, "выключается!")
+#         Robot.k -= 1
+#         if Robot.k == 0:
+#             print(self.name, "был последним")
+#         else:
+#             print("Работающих роботов осталось:", Robot.k)
+#
+#     def say_hi(self):
+#         print(f"Приветствую меня зовут {self.name}")
+#
+#
+# droid1 = Robot("R2-D2")
+# droid1.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# droid2 = Robot("C-3PO")
+# droid2.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# droid3 = Robot("TO-3PO")
+# droid3.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# print("\nЗдесь роботы могут проделать какую-то работу.\n")
+#
+# print("Роботы закончили свою работу давайте их выключим")
+#
+# del droid1
+# del droid2
+# del droid3
+#
+# print("Численность роботов:", Robot.k)
 
-    def __init__(self, name):
-        self.name = name
-        print("Инициализация робота:", self.name)
-        Robot.k += 1
 
-    def __del__(self):
-        print(self.name, "выключается!")
-        Robot.k -= 1
-        if Robot.k == 0:
-            print(self.name, "был последним")
-        else:
-            print("Работающих роботов осталось:", Robot.k)
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x  # _Point__x
+#             self.__y = y  # _Point__y
+#
+#     def __check_value(s):
+#         if isinstance(s, int) or isinstance(s, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):  # установить новое значение
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coord(self):  # получаем значения
+#         return self.__x, self.__y
+#
+#     def set_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координаты x должна быть числом")
+#
+#     def set_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print("Координаты y должна быть числом")
+#
+#
+# p1 = Point(5, 10)
+# print(p1.__dict__)
+# # p1.set_coord(100, 'abc')
+# print(p1.get_coord())
+# # print(p1.__x, p1.__y)
+# # p1.__x = 100
+# # p1.__y = "abc"
+# # print(p1.x, p1.y)
+# # print(p1.__dict__)
+# # print(Point.__check_value())
+# # print(Point.__dict__)
+# p1.set_x(50)
+# p1.set_y("abc")
+# print(p1.__dict__)
 
-    def say_hi(self):
-        print(f"Приветствую меня зовут {self.name}")
+# import math
+#
+#
+# class Rectangle:
+#     def __init__(self, length, width):
+#         self.__length = length
+#         self.__width = width
+#
+#     def __check_value(s):
+#         if isinstance(s, int) or isinstance(s, float):
+#             return True
+#         return False
+#
+#     def set_width(self, value):
+#         if Rectangle.__check_value(value):
+#             self.__width = value
+#
+#     def set_length(self, value):
+#         if Rectangle.__check_value(value):
+#             self.__length = value
+#
+#     def get_width(self):
+#         return self.__width
+#
+#     def get_length(self):
+#         return self.__length
+#
+#     def get_area(self):
+#         return self.__length * self.__width
+#
+#     def get_perimeter(self):
+#         return 2 * (self.__length + self.__width)
+#
+#     def get_hypotenuse(self):
+#         return round(math.sqrt(self.__length ** 2 + self.__width ** 2), 2)
+#
+#     def draw(self):
+#         print(("*" * self.__width + "\n") * self.__length)
+#
+#
+# a = Rectangle(4, 12)
+# a.set_length(3)
+# a.set_width(9)
+# print("Длина прямоугольника:", a.get_length())
+# print("Ширина прямоугольника:", a.get_width())
+# print("Площадь прямоугольника:", a.get_area())
+# print("Периметр прямоугольника:", a.get_perimeter())
+# print("Гипотенуза прямоугольника:", a.get_hypotenuse())
+# a.draw()
+
+# class Point:
+#     __slots__ = "__x", "__y", "z"
+#
+#     def __init__(self, x, y, z):
+#         self.__x = x
+#         self.__y = y
+#         self.z = z
+#
+#
+# p1 = Point(5, 10, 15)
+# p1.z = 15
+# # print(p1.__dict__)
+# print(p1.z)
 
 
-droid1 = Robot("R2-D2")
-droid1.say_hi()
-print("Численность роботов:", Robot.k)
+# class Point:
+#
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __set_x(self, x):
+#         self.__x = x
+#         print("__set_x")
+#
+#     def __get_x(self):
+#         print("__get_x")
+#         return self.__x
+#
+#     x = property(__get_x, __set_x)
+#
+#
+# p1 = Point(5, 10)
+# # p1.x = 9
+# print(p1.x)
+# print(p1.__dict__)
 
-droid2 = Robot("C-3PO")
-droid2.say_hi()
-print("Численность роботов:", Robot.k)
 
-droid3 = Robot("TO-3PO")
-droid3.say_hi()
-print("Численность роботов:", Robot.k)
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     @property
+#     def x(self):
+#         return self.__x
+#
+#     @x.setter
+#     def x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координата X должны быть числом")
+#
+#     def __check_value(s):
+#         if isinstance(s, int) or isinstance(s, float):
+#             return True
+#         return False
+#     # x = property(__get_x, __set_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.x = 9
+# # print(p1.x)
+# print(p1.__dict__)
 
-print("\nЗдесь роботы могут проделать какую-то работу.\n")
+# class KgToPounds:
+#     def __init__(self, kg):
+#         self.__kg = kg
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self, new_kg):
+#         if isinstance(new_kg, (int, float)):
+#             self.__kg = new_kg
+#         else:
+#             print("Килограммы задаются только числами")
+#
+#     @kg.deleter
+#     def kg(self):
+#         print("Удаление свойства")
+#         del self.__kg
+#
+#     def to_pounds(self):
+#         return self.__kg * 2.205
+#
+#
+# weight = KgToPounds(12)
+# print(weight.kg, "кг =>", end=" ")
+# print(weight.to_pounds(), "фунтов")
+# weight.kg = 41
+# print(weight.kg, "кг =>", end=" ")
+# print(weight.to_pounds(), "фунтов")
+# weight.kg = "десять"
+# del weight.kg
 
-print("Роботы закончили свою работу давайте их выключим")
 
-del droid1
-del droid2
-del droid3
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         Point.__count += 1
+#
+#     # @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#     get_count = staticmethod(get_count)
+#
+#
+# p1 = Point(5, 10)
+# p2 = Point(5, 10)
+# p3 = Point(5, 10)
+#
+# print(Point.get_count())
+# print(p1.get_count())
 
-print("Численность роботов:", Robot.k)
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#
+# print(Change.inc(10), Change.dec(10))
+#
+#
+# def inc(x):
+#     return x + 1
+#
+#
+# def dec(x):
+#     return x - 1
+#
+#
+# print(inc(10), dec(10))
+
+
+# class Numbers:
+#     @staticmethod
+#     def max(a, b, c, d):
+#         mx = a
+#         if b > mx:
+#             mx = b
+#         if c > mx:
+#             mx = c
+#         if d > mx:
+#             mx = d
+#         return mx
+#
+#     @staticmethod
+#     def min(*args):
+#         mn = args[0]
+#         for i in args:
+#             if i < mn:
+#                 mn = i
+#         return mn
+#
+#     @staticmethod
+#     def average(*args):
+#         return sum(args) / len(args)
+#
+#     @staticmethod
+#     def factorial(n):
+#         fact = 1
+#         for i in range(1, n + 1):
+#             fact *= i
+#         return fact
+#
+#
+# print("Максимальное число:", Numbers.max(3, 5, 7, 9))
+# print("Минимальное число:", Numbers.min(3, 5, 7, 9))
+# print("Среднее арифметическое:", Numbers.average(3, 5, 7, 9))
+# print("Факториал числа:", Numbers.factorial(5))
+
+
+# class Date:
+#     def __init__(self, day=0, month=0, year=0):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#
+#     def string_to_db(self):
+#         return f"{self.day}-{self.month}-{self.year}"
+#
+#     @classmethod
+#     def from_string(cls, date_as_string):
+#         day, month, year = map(int, date_as_string.split('.'))  # [21, 12, 2023]
+#         date = cls(day, month, year)  # date = Date(21, 12, 2023)
+#         return date
+#
+#     @staticmethod
+#     def is_date_valid(date_as_string):
+#         if date_as_string.count(".") == 2:
+#             day, month, year = map(int, date_as_string.split('.'))
+#             return day <= 31 and month <= 12 and year <= 3999
+#
+#
+# dates = [
+#     "23.10.2024",
+#     "21/12/2024",
+#     "01.01.2022",
+#     "12.31.2021"
+# ]
+#
+# for i in dates:
+#     if Date.is_date_valid(i):
+#         date1 = Date.from_string(i)
+#         print(date1.string_to_db())
+#     else:
+#         print("Неправильная дата или формат строки с датой")
+
+# string_date = "23.10.2024"
+# day, month, year = map(int, string_date.split('.'))
+# date = Date(day, month, year)
+# print(date.string_to_db())
+
+# date1 = Date.from_string("23.10.2024")
+# print(date1.string_to_db())
+# date2 = Date.from_string("21.12.2024")
+# print(date2.string_to_db())
+
+
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = 'RUB'
+#     suffix_usd = 'USD'
+#     suffix_eur = 'EUR'
+#
+#     def __init__(self, surname, num, percent, value):
+#         self.num = num
+#         self.surname = surname
+#         self.percent = percent
+#         self.value = value
+#         print(f"Счет #{self.num} принадлежащий {self.surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print(f"Остаток средств с текущего счета {self.value} был переведен на правопреемника")
+#         self.value = 0
+#         self.print_balance()
+#         print("*" * 50)
+#         print(f"Счет #{self.num} принадлежащий {self.surname} был закрыт.")
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.value, Account.rate_usd)
+#         print(f"Состояние счета: {usd_val} {Account.suffix_usd}")
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.value, Account.rate_eur)
+#         print(f"Состояние счета: {eur_val} {Account.suffix_eur}")
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс: {self.value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print("Информация о счете:")
+#         print("-" * 20)
+#         print(f"#{self.num}")
+#         print(f"Владелец счета: {self.surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.percent:.0%}")
+#         print("-" * 20)
+#
+#     def edit_owner(self, surname):
+#         self.surname = surname
+#
+#     def add_percents(self):
+#         self.value += self.value * self.percent
+#         print("Проценты были успешно начислены")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self.value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self.value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#
+# acc = Account("Долгих", "12345", 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+#
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+# print()
+#
+# acc.edit_owner("Дюма")
+# acc.print_info()
+# print()
+#
+# acc.add_percents()
+# print()
+#
+# acc.withdraw_money(100)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
+#
+# acc.add_money(5000)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
+
+
+class UserData:
+    def __init__(self, fio, old, ps, weight):
+        self.verify_fio(fio)
+        self.__fio = fio
+        self.__old = old
+        self.__passport = ps
+        self.__weight = weight
+
+    @staticmethod
+    def verify_fio(fio):
+        if not isinstance(fio, str):
+            raise TypeError("ФИО должно быть строкой")
+        f = fio.split()
+        if len(f) != 3:
+            raise TypeError("Не верный формат ФИО")
+
+
+p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
