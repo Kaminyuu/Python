@@ -36,6 +36,7 @@ class Square(Shape):
     def get_art(self):
         for i in range(self.side1):
             print("*" * self.side1)
+        # return ("*" * self.side1 + "\n") * self.side1
 
     def info(self):
         print(f"===Квадрат=== \nСторона: {self.side1}")
@@ -78,7 +79,7 @@ class Triangle(Shape):
         return self.side1 + self.side2 + self.side3
 
     def get_area(self):
-        p = (self.side1 + self.side2 + self.side3) / 2
+        p = self.get_perimeter() / 2
         return round(sqrt(p * (p - self.side1) * (p - self.side2) * (p - self.side2)), 2)
 
     def get_art(self):
@@ -92,11 +93,7 @@ class Triangle(Shape):
         self.get_art()
 
 
-s1 = Square(3, "red")
-s1.info()
-print()
-s2 = Rectangle(3, 7, "green")
-s2.info()
-print()
-s3 = Triangle(11, 6, 6, "yellow")
-s3.info()
+figs = [Square(3, "red"), Rectangle(3, 7, "green"), Triangle(11, 6, 6, "yellow")]
+for j in figs:
+    j.info()
+    print()
