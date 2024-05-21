@@ -5,7 +5,6 @@ from random import choice
 def gen_person():
     name = ''
     tel = ''
-    # tel2 = ''
 
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
@@ -20,28 +19,27 @@ def gen_person():
         'name': name,
         'tel': tel
     }
-    return person
+    return person, tel
 
 
-def gen_tel():
-    tel = ''
-    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-    while len(tel) != 10:
-        tel += choice(nums)
-    return tel
+# def gen_tel():
+#     tel = ''
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#     return tel
 
 
-def write_json(person_dict):
+def write_json(person_dict, num):
     try:
         data = json.load(open('test.json'))
     except FileNotFoundError:
         data = dict()
 
-    data[gen_tel()] = person_dict
+    data[num] = person_dict
     with open('test.json', 'w') as f:
         json.dump(data, f, indent=2)
 
 
 for i in range(5):
-    write_json(gen_person())
-
+    write_json(gen_person()[0], gen_person()[1])
