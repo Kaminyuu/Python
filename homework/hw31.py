@@ -13,14 +13,26 @@ class CountryCapital:
         return f"{self.country}: {self.capital}"
 
     @staticmethod
-    def add_country(file_name):
-        country_name = input("Введите название страны: ")
-        capital_name = input("Введите название столицы: ")
-
+    def load(file_name):
+        date = None
         try:
             date = json.load(open(file_name))
         except FileNotFoundError:
             date = {}
+        finally:
+            return date
+
+    @staticmethod
+    def add_country(file_name):
+        country_name = input("Введите название страны: ")
+        capital_name = input("Введите название столицы: ")
+
+        # try:
+        #     date = json.load(open(file_name))
+        # except FileNotFoundError:
+        #     date = {}
+
+        date = CountryCapital.load(file_name)
 
         date[country_name] = capital_name
 
@@ -37,9 +49,10 @@ class CountryCapital:
 
         if delete_country in date:
             del date[delete_country]
-
-        with open(file_name, 'w') as f:
-            json.dump(date, f, indent=2)
+            with open(file_name, 'w') as f:
+                json.dump(date, f, indent=2)
+        else:
+            print("Такой страны в базе нет")
 
     @staticmethod
     def search_country(file_name):
@@ -53,6 +66,11 @@ class CountryCapital:
                 dic = {}
                 dic[country] = capital
                 print(dic)
+
+        if search_country in date:
+            print(f"Страна {search_country} столица {date[search_country]} есть в словаре")
+        else:
+            print(f"Страны {search_country} нет в словаре")
 
     @staticmethod
     def editing_country(file_name):
@@ -75,17 +93,22 @@ class CountryCapital:
 
 file = 'list_capital.json'
 index = ''
-while index != '6':
+while True:
     index = input(
         "Действие:\n1 - добавление данных\n2 - удаленние данных\n3 - поиск данных\n"
         "4 - редактирование данных\n5 - просмотр данных\n6 - завершение работы\nВвод: ")
     if index == '1':
         CountryCapital.add_country(file)
-    if index == '2':
+    elif index == '2':
         CountryCapital.delete_county(file)
-    if index == '3':
+    elif index == '3':
         CountryCapital.search_country(file)
-    if index == '4':
+    elif index == '4':
         CountryCapital.editing_country(file)
-    if index == '5':
+    elif index == '5':
         CountryCapital.load_from_file(file)
+    elif index == '6':
+        break
+    else:
+        print("Введен некорректный номер")
+
