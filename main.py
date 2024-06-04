@@ -6134,29 +6134,55 @@
 #     main()
 
 
-import requests
-from bs4 import BeautifulSoup
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     pcs = soup.find_all("div", class_="thumbnail")
+#     for pc in pcs:
+#         main = pc.find("h3", class_="topic-title").find("a").text
+#         title = pc.find("div", class_="topic-content text").text
+#         author = pc.find("a", class_="topic-info-author-link").text
+#         print(main, title, author)
+#
+#
+# def main():
+#     url = "https://www.ixbt.com/live/blog/games/"
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
-def get_html(url):
-    r = requests.get(url)
-    return r.text
+import sqlite3
 
 
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    pcs = soup.find_all("div", class_="thumbnail")
-    for pc in pcs:
-        main = pc.find("h3", class_="topic-title").find("a").text
-        title = pc.find("div", class_="topic-content text").text
-        author = pc.find("a", class_="topic-info-author-link").text
-        print(main, title, author)
+# con = sqlite3.connect("profile.db")
+# cur = con.cursor()
+#
+# cur.execute("""
+# """)
+#
+# con.close()
 
 
-def main():
-    url = "https://www.ixbt.com/live/blog/games/"
-    get_data(get_html(url))
+with sqlite3.connect("profile.db") as con:
+    cur = con.cursor()
+
+    cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    summa REAL,
+    date BLOB)""")
+
+    # cur.execute("DROP TABLE users")
 
 
-if __name__ == '__main__':
-    main()
