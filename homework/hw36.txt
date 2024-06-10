@@ -54,7 +54,7 @@ WHERE Prod = "столы обеденные"
 12.
 SELECT NAME
 FROM ZAKAZ
-WHERE NAME GLOB "[Аа]*а*"
+WHERE NAME LIKE '%a%a%' OR NAME LIKE 'A%a%'
 
 13.
 SELECT NAME, KOD

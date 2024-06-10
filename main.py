@@ -6162,7 +6162,7 @@
 #     main()
 
 
-import sqlite3
+# import sqlite3
 
 
 # con = sqlite3.connect("profile.db")
@@ -6174,15 +6174,78 @@ import sqlite3
 # con.close()
 
 
-with sqlite3.connect("profile.db") as con:
+# with sqlite3.connect("profile.db") as con:
+#     cur = con.cursor()
+#
+#     cur.execute("""CREATE TABLE IF NOT EXISTS users(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     summa REAL,
+#     date BLOB)""")
+#
+#     # cur.execute("DROP TABLE users")
+
+
+# import sqlite3
+#
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+
+# cur.execute("""CREATE TABLE IF NOT EXISTS persons(
+# id INTEGER PRIMARY KEY AUTOINCREMENT,
+# name TEXT NOT NULL,
+# phone BLOB NOT NULL DEFAULT "+79090000000",
+# age INTEGER CHECK(age > 0 AND age < 100),
+# email TEXT UNIQUE
+# )""")
+
+# cur.execute("""
+# ALTER TABLE persons
+# RENAME TO person_table
+# """)
+
+# добавить поле в таблицу
+# cur.execute("""
+#     ALTER TABLE person_table
+#     ADD COLUMN address NOT NULL DEFAULT "Москва"
+#     """)
+
+# удалить поле в таблице
+# cur.execute("""
+#     ALTER TABLE person_table
+#     DROP COLUMN address
+#     """)
+
+# переименование поля
+# cur.execute("""
+#     ALTER TABLE person_table
+#     RENAME COLUMN address TO home_address
+#     """)
+
+# удаление таблицы
+# cur.execute("""
+#     DROP TABLE person_table
+#     """)
+
+import sqlite3
+
+with sqlite3.connect("db_3.db") as con:
     cur = con.cursor()
 
-    cur.execute("""CREATE TABLE IF NOT EXISTS users(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    summa REAL,
-    date BLOB)""")
+    cur.execute("""
+    SELECT *
+    FROM T1
+    LIMIT 2, 5
+    """)
 
-    # cur.execute("DROP TABLE users")
+    # for i in cur:
+    #     print(i)
 
+    res = cur.fetchone()
+    print(res)
 
+    res2 = cur.fetchmany(2)
+    print(res2)
+
+    res3 = cur.fetchall()
+    print(res3)

@@ -1,0 +1,131 @@
+1.
+SELECT COUNT(Client)
+FROM Client
+
+2.
+SELECT COUNT(Seller)
+FROM Seller
+WHERE Status IS "посредник"
+
+3.
+SELECT ROUND(AVG(CostUnit * Count)) AS "Средняя сумма сделки"
+FROM ClientGoods
+
+4.
+SELECT SUM(CostUnit * Count) AS "Общая сумма"
+FROM ClientGoods
+
+5.
+SELECT MAX(Count) 
+FROM ClientGoods
+
+6.
+SELECT MIN(Count*CostUnit) 
+FROM ClientGoods
+
+7.
+SELECT SUM(cg.Count*cg.CostUnit) AS "Сумма заказов по магазинам", c.Client
+FROM ClientGoods AS cg, Client AS c
+WHERE cg.INNClient = c.INNClient AND c.Status = "магазин"
+GROUP BY Client
+
+SELECT SUM(cg.Count*cg.CostUnit) AS "Сумма заказа на магазины"
+FROM ClientGoods AS cg, Client AS c
+WHERE cg.INNClient = c.INNClient AND c.Status = "магазин"
+
+8.
+SELECT Count(Goods)
+FROM SallerGoods
+WHERE Goods GLOB "*[В-в]афли*"
+
+9.
+SELECT AVG(CostUnit*Count) AS "Cредняя цена на растительное масло "
+FROM SallerGoods
+WHERE Goods GLOB "*масло?[коп]*"
+
+10.
+SELECT SUM(cg.Count), Goods
+FROM SallerGoods AS sg, ClientGoods AS cg
+WHERE sg.ID = cg.ID AND Goods LIKE "%Яблоки%"
+GROUP BY Goods
+
+11.
+SELECT SUM(cg.Count) AS "Сумма закупленного картофеля кафейнями"
+FROM Client c, ClientGoods cg, SallerGoods sg
+WHERE sg.ID=cg.ID AND c.INNClient=cg.INNClient AND sg.Goods LIKE "%Картофель%" AND c.Status IS "кафе"
+
+12.
+SELECT COUNT(c.Client)
+FROM Client c, ClientGoods cg, SallerGoods sg
+WHERE sg.ID=cg.ID AND c.INNClient=cg.INNClient AND sg.Goods IS "Перец черный молотый"
+
+13.
+SELECT COUNT(sg.Goods)
+FROM Client c, ClientGoods cg, SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND s.Status IS "посредник"
+
+14.
+SELECT MIN(CostUnit)
+FROM ClientGoods
+
+SELECT MIN(CostUnit)
+FROM SallerGoods
+
+15.
+SELECT MIN(CostUnit * Count)
+FROM ClientGoods
+
+16.
+SELECT MAX(cg.Count*cg.CostUnit) AS "Сумма заказа на магазины", c.Client
+FROM ClientGoods AS cg, Client AS c, SallerGoods sg
+WHERE cg.INNClient = c.INNClient AND sg.ID=cg.ID AND c.Status = "магазин"
+
+17.
+SELECT COUNT(s.Status), c.Client
+FROM ClientGoods cg, Client c, SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND c.Client IS '"Березка"'
+
+18.
+SELECT ROUND(MIN(sg.CostUnit*sg.Count)) AS "минимальная сумма сделки", s.Seller AS произволитель
+FROM ClientGoods cg, Client c, SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND s.Status IS "производитель"
+GROUP BY s.Seller
+
+19.
+SELECT AVG(sg.CostUnit)
+FROM ClientGoods cg, Client c, SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND sg.Goods LIKE "Чай%"
+
+20.
+SELECT MAX(sg.CostUnit*sg.Count)
+FROM Client c, ClientGoods cg, SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND s.Status IS "посредник"
+
+21.
+SELECT MIN(cg.CostUnit*cg.Count)
+FROM Client c, ClientGoods cg, SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND s.Status IS "посредник"
+
+22.
+SELECT COUNT(sg.Goods)
+FROM Client c, ClientGoods cg, SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND s.Seller IS '"Млечный путь"'
+
+23.
+SELECT COUNT(Goods)
+FROM SallerGoods
+WHERE Goods LIKE "%Вафли%"
+
+24.
+SELECT MIN(CostUnit * Count)
+FROM ClientGoods
+
+25.
+SELECT AVG(cg.CostUnit * cg.Count)
+FROM Client c, ClientGoods cg, SallerGoods sg, Seller s
+WHERE s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient AND sg.Goods LIKE "%масло%"
+
+26.
+SELECT COUNT(Status)
+FROM Seller
+WHERE Status IS "посредник"
