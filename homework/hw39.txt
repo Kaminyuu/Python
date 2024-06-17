@@ -1,0 +1,150 @@
+4.
+SELECT N_Z
+FROM Zachetki
+WHERE Id_studenta IN 
+    (SELECT Id_St
+    FROM Exzamen
+    WHERE Id_St IN
+                (SELECT ID_St
+                FROM Student
+                WHERE "Group" IN
+                    (SELECT "Group"
+                    FROM G
+                    WHERE Kafedra IN
+                        (SELECT Kafedra
+                        FROM Kafedra
+                        WHERE Decanat LIKE "Физико-технический")
+                    ) 
+                )
+            )
+
+
+6.
+SELECT Predmet, COUNT(Predmet)
+FROM Exzamen
+GROUP BY Predmet
+
+
+SELECT DISTINCT Predmet
+FROM Exzamen
+GROUP BY Predmet
+
+7.
+SELECT AVG(Ball)
+FROM Exzamen
+WHERE Id_St IN(
+    SELECT ID_St
+    FROM Student
+    WHERE FIO LIKE "Васильева Ольга Степановна"
+    )
+
+8.
+SELECT COUNT(s."Group"), g.Kafedra
+FROM Student s JOIN G g
+ON s."Group" = g."Group"
+GROUP BY g.Kafedra
+
+9.
+SELECT "Group"
+FROM G
+WHERE Kafedra IN
+    (SELECT Kafedra
+    FROM Kafedra
+    WHERE Decanat LIKE "Физико-технический")
+
+10.
+SELECT FIO
+FROM Student
+WHERE ID_St IN 
+    (SELECT Id_St
+    FROM Exzamen
+    WHERE Predmet LIKE "Дифференциальные уравнения" AND Ball LIKE "5"
+    )
+
+11.
+SELECT COUNT(Predmet)
+FROM Exzamen
+WHERE Id_St IN(
+    SELECT ID_St
+    FROM Student
+    WHERE FIO LIKE "Шутов Анатолий Александрович"
+    )
+
+12.
+SELECT Kafedra
+FROM G
+WHERE "Group" IN(
+    SELECT "Group"
+    FROM Student
+    WHERE ID_St IN(
+        SELECT Id_St
+        FROM Exzamen
+        WHERE BALL IS NULL
+        )
+    )
+
+13.
+SELECT COUNT(k.Kafedra), k.Decanat
+FROM Kafedra k JOIN G g
+ON k.Kafedra = g.Kafedra
+GROUP BY k.Decanat
+
+14.
+SELECT COUNT(Ball)
+FROM Exzamen
+WHERE Id_St IN(
+    SELECT ID_St
+    FROM Student
+    WHERE "Group" IN 
+        (SELECT "Group"
+        FROM G
+        WHERE Kafedra IN
+            (SELECT Kafedra
+            FROM Kafedra
+            WHERE Decanat LIKE "Физико-математический"
+            )    
+        )
+    ) AND Ball LIKE "5"
+
+15.
+SELECT N_Z
+FROM Zachetki
+WHERE Id_studenta IN 
+    (SELECT Id_St
+    FROM Exzamen
+    WHERE Id_St IN
+                (SELECT ID_St
+                FROM Student
+                WHERE "Group" IN
+                    (SELECT "Group"
+                    FROM G
+                    WHERE "Group" LIKE "ФТ151"
+                    ) 
+                )
+            )
+
+16.
+
+SELECT k.Kafedra
+FROM Kafedra k JOIN G g
+ON k.Kafedra = g.Kafedra
+WHERE k.Decanat LIKE "Физико-математический";
+
+
+SELECT Predmet
+FROM Exzamen
+WHERE Id_St IN(
+    SELECT ID_St
+    FROM Student
+    WHERE "Group" IN 
+        (SELECT "Group"
+        FROM G
+        WHERE Kafedra IN
+            (SELECT Kafedra
+            FROM Kafedra
+            WHERE Decanat LIKE "Физико-математический"
+            )    
+        )
+    )
+
+
