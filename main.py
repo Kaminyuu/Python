@@ -3116,7 +3116,8 @@
 # two = "two.txt"
 # three = "three.txt"
 
-# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока
+# №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
 #
 # with open(one, 'w') as f:
 #     f.write(text)
@@ -3284,7 +3285,8 @@
 # print_tree("Work", True)
 
 
-# print(os.path.exists(r"C:\Users\Untur\PycharmProjects\pythonProject\nested1\nested2\nested3\three.txt"))  # возвращает True если
+# print(os.path.exists(r"C:\Users\Untur\PycharmProjects\
+# pythonProject\nested1\nested2\nested3\three.txt"))  # возвращает True если
 # # путь существует в файловой системе
 
 # import time
@@ -6419,12 +6421,230 @@
 # SQLAlchemy ORM
 
 
-import os
+# import os
+#
+# from sqlalchemy import and_, or_, not_, desc, func
+#
+# from models.database import DATABASE_NAME, Session
+# import create_database as db_creator
+#
+# from models.lesson import Lesson, association_table
+# from models.student import Student
+# from models.group import Group
+#
+# if __name__ == '__main__':
+#     db_is_created = os.path.exists(DATABASE_NAME)
+#     if not db_is_created:
+#         db_creator.create_database()
+#
+#     session = Session()
+#     # print(session.query(Lesson).all())
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Lesson):
+#     #     print(it)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Lesson):
+#     #     print(it.lesson_title)
+#     # print("*" * 60)
+#     #
+#     # print(session.query(Lesson).count())
+#     # print("*" * 60)
+#     #
+#     # print(session.query(Lesson).first())
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Lesson).filter(Lesson.id >= 3):
+#     #     print(it.lesson_title)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Lesson).filter(and_(Lesson.id >= 3, Lesson.lesson_title.like('Ф%'))):
+#     #     print(it.lesson_title)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Lesson).filter(or_(Lesson.id >= 3, Lesson.lesson_title.like('Ф%'))):
+#     #     print(it.lesson_title)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Lesson).filter(not_(Lesson.id >= 3), not_(Lesson.lesson_title.like('М%'))):
+#     #     print(it.lesson_title)
+#     # print("*" * 60)
+#     #
+#     # print(session.query(Lesson).filter(Lesson.lesson_title is not None).all())
+#     # print("*" * 60)
+#     #
+#     # print(session.query(Lesson).filter(Lesson.lesson_title.in_(['Математика', 'Линейная алгебра'])).all())
+#     # print("*" * 60)
+#     #
+#     # print(session.query(Lesson).filter(Lesson.lesson_title.notin_(['Математика', 'Линейная алгебра'])).all())
+#     # print("*" * 60)
+#     #
+#     # print(session.query(Student).filter(Student.age.between(16, 17)).all())
+#     # print("*" * 60)
+#     #
+#     # print(session.query(Student).filter(not_(Student.age.between(17, 24))).all())
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Student).filter(Student.age.like("1%")).limit(4).offset(3):
+#     #     print(it)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Student).order_by(Student.surname):
+#     #     print(it)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Student).order_by(desc(Student.surname)):
+#     #     print(it)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Student).join(Group).filter(Group.group_name == 'MDA-9'):
+#     #     print(it)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(func.count(Student.surname), Group.group_name).join(Group).group_by(Group.group_name):
+#     #     print(it)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(func.count(Student.surname), Group.group_name).join(Group).group_by(
+#     #         Group.group_name).having(func.count(Student.surname) < 25):
+#     #     print(it)
+#     # print("*" * 60)
+#     #
+#     # for it in session.query(Student.age).filter(Student.age < 20).distinct():
+#     #     print(it)
+#     # print("*" * 60)
+#
+#     # for it in session.query(Lesson):
+#     #     print(it)
+#     # print("*" * 60)
+#     #
+#     # i = session.query(Lesson).first()
+#     # i.lesson_title = "Информатика"
+#     # session.add(i)
+#     # session.commit()
+#
+#     for it in session.query(Lesson):
+#         print(it)
+#     print("*" * 60)
+#
+#     # session.add(Lesson(lesson_title="Математика"))
+#     # session.commit()
+#
+#     i = session.query(Lesson).filter(Lesson.lesson_title == "Математика").first()  # .one()
+#     session.delete(i)
+#     session.commit()
+#
+#     for it in session.query(Lesson):
+#         print(it)
+#     print("*" * 60)
 
-from models.database import DATABASE_NAME
-import create_database as db_creator
+# Шаблонизатор (Jinja)
 
-if __name__ == '__main__':
-    db_is_created = os.path.exists(DATABASE_NAME)
-    if not db_is_created:
-        db_creator.create_database()
+# from jinja2 import Template
+
+# name = "Игорь"
+# age = 25
+# per = {'name': "Игорь", 'age': 25}
+#
+# tm = Template("Мне {{ p.age*2 }} лет. Меня зовут {{ p.name.upper() }}.")
+# msg = tm.render(p=per)
+# # msg = tm.render(n=name, a=age)
+#
+# print(msg)
+
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# per = Person("Игорь", 25)
+#
+# tm = Template("Мне {{ p['age']*2 }} лет. Меня зовут {{ p.get_name().upper() }}.")
+# msg = tm.render(p=per)
+#
+# print(msg)
+
+# cities = [
+#     {'id': 1, 'city': 'Москва'},
+#     {'id': 2, 'city': 'Сочи'},
+#     {'id': 3, 'city': 'Минск'},
+#     {'id': 4, 'city': 'Ярославль'},
+#     {'id': 5, 'city': 'Смоленск'},
+# ]
+#
+# link = """<select name="cities">
+#     {% for c in cities -%}
+#         {% if c.id > 3 -%}
+#             <option value="{{ c['id'] }}">{{ c['city'] }}</option>
+#         {% elif c.city == "Москва" %}
+#             <option>{{ c['city'] }}</option>
+#         {% else -%}
+#             {{ c['city'] }}
+#         {% endif -%}
+#     {% endfor -%}
+# </select>"""
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+#
+# print(msg)
+
+# cars = [
+#     {'model': 'Audi', 'price': 23000},
+#     {'model': 'Skoda', 'price': 17300},
+#     {'model': 'Renault', 'price': 44300},
+#     {'model': 'Wolksvagen', 'price': 21300}
+# ]
+
+# tpl = "Сумма: {{ cs | sum(attribute='price') }}"
+# tpl = "{{ cs | max(attribute='price') }}"
+# tpl = "{{ (cs | min(attribute='price')).model }}"
+# tpl = "{{ cs | random }}"
+# tpl = "{{ cs | replace('model', 'brand') }}"
+#
+# tm = Template(tpl)
+# msg = tm.render(cs=cars)
+#
+# print(msg)
+
+# Макроопределение
+
+# html = """
+# {% macro input_func(name, value, type="text", size=40) %}
+#     <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+# {% endmacro %}
+#
+#
+# <p>{{ input_func('name', 'Введите имя') }}</p>
+# <p>{{ input_func('psw', 'Пароль', 'password') }}</p>
+# <p>{{ input_func('email', 'Электронная почта','email') }}</p>
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
+
+
+from jinja2 import Environment, FileSystemLoader
+
+persons = [
+    {"name": "Алексей", "year": 18, "weight": 78.5},
+    {"name": "Никита", "year": 28, "weight": 82.3},
+    {"name": "Виталий", "year": 33, "weight": 94.0}
+]
+
+file_loader = FileSystemLoader('templates')
+env = Environment(loader=file_loader)
+
+tm = env.get_template('about.html')
+msg = tm.render(users=persons, title="About Jinja")
+
+print(msg)
+
+

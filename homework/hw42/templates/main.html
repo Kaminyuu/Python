@@ -1,0 +1,7 @@
+{% include 'header.html' %}
+{% import 'dialog.html' as dlg -%}
+{% for h in htmls -%}
+    {{ dlg.dialog(h.type, h.name, h.placeholder) }}
+{% endfor -%}
+
+{% include 'footer.html' -%}

@@ -6,7 +6,7 @@ DATABASE_NAME = 'students.db'
 
 engine = create_engine(f"sqlite:///{DATABASE_NAME}")
 Session = sessionmaker(bind=engine)
-Base = declarative_base
+Base = declarative_base()
 
 
 def create_db():

@@ -15,13 +15,14 @@ def create_database(load_fake_data=True):
 def _load_fake_data(session):
     lessons_name = ['Математика', 'Программирование', 'Философия', 'Алгоритмы и структуры данных',
                     'Линейная алгебра', 'Статистика', 'Физика']
+
     group1 = Group(group_name="MDA-7")
     group2 = Group(group_name="MDA-9")
     session.add(group1)
     session.add(group2)
 
     for key, it in enumerate(lessons_name):
-        lesson = Lesson(lessons_title=it)
+        lesson = Lesson(lesson_title=it)
         lesson.groups.append(group1)
         if key % 2 == 0:
             lesson.groups.append(group2)
