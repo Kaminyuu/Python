@@ -1,5 +1,4 @@
 import sqlite3
-import time
 import math
 
 
@@ -16,35 +15,34 @@ class FDataBase:
             if res:
                 return res
         except IOError:
-            print("Ошибка чтения из БД")
+            print("Ошибка чтения из базы данных")
         return []
 
-    def add_post(self, title, text):
+    def add_curse(self, title, cost, text):
         try:
-            tm = math.floor(time.time())
-            self.__cur.execute("INSERT INTO posts VALUES(NULL, ?, ?, ?)", (title, text, tm))
+            self.__cur.execute("INSERT INTO curses VALUES(NULL, ?, ?, ?)", (title, cost, text))
             self.__db.commit()
             return True
         except sqlite3.Error as e:
-            print("Ошибка добавления статьи в БД " + str(e))
+            print("Ошибка добавления курса в базу данных" + str(e))
             return False
 
-    def get_post(self, post_id):
+    def get_curse(self, curse_id):
         try:
-            self.__cur.execute(f"SELECT title, text FROM posts WHERE id={post_id}")
+            self.__cur.execute(f"SELECT title, text, cost FROM curses WHERE id={curse_id}")
             res = self.__cur.fetchone()
             if res:
                 return res
         except sqlite3.Error as e:
-            print("Ошибка получения статьи из БД " + str(e))
-        return False, False
+            print("Ошибка получения курса из базы данных" + str(e))
+        return False, False, False
 
-    def get_posts_annonce(self):
+    def get_curse_announce(self):
         try:
-            self.__cur.execute("SELECT id, title, text FROM posts ORDER BY time DESC")
+            self.__cur.execute("SELECT id, title, text, cost FROM curses")
             res = self.__cur.fetchall()
             if res:
                 return res
         except sqlite3.Error as e:
-            print("Ошибка получения статей из БД " + str(e))
+            print("Ошибка получения курсов из базы данных" + str(e))
         return []

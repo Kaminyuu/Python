@@ -9,7 +9,7 @@ body{
     display: flex;
     justify-content: space-around;
     list-style: none;
-    background: orange;
+    background: rgb(46, 131, 184);
     padding: 20px;
     margin-top: 0;
 }
@@ -19,6 +19,7 @@ body{
     max-width: 1200px;
     padding: 20px;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .flash{
@@ -38,40 +39,58 @@ body{
 
 .menu a{
     font-weight: bold;
-    color: brown;
+    color: white;
+    text-decoration: none;
 }
 
 ul{
     list-style: none;
-    padding: 0;
-}
-
-.title a{
-    text-decoration: none;
-    color: brown;
-}
-
-.title, .annonce{
-    border: 1px solid #CCC;
-    padding: 10px 20px;
 }
 
 .title{
-    margin: 0;
     font-weight: bold;
-    background: gold;
+    color: white;
+    background: rgb(46, 131, 184);
+    margin: 0;
 }
 
-.title a{
-    display: block;
+.button{
+    font-weight: bold;
+    color: white;
+    background: rgb(46, 131, 184);
+    font-size: large;
+    padding: 10px 70px 10px;
 }
 
-.title:hover{
-    background: orange;
+.title, .cost, .text{
+    padding: 20px 10px;
+    margin: 0;
+    
 }
 
-.annonce{
-    margin-top: -1px;
-    margin-bottom: 40px;
-    background: #FFF;
+.text, .back, .cost{
+    background: white;
+}
+
+.cost{
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.blue{
+    color: rgb(46, 131, 184);
+    font-size: 40px;
+}
+
+.back{
+    padding: 20px;
+}
+
+.one{
+    padding: 40px;
+    display: inline;
+}
+
+.two{
+    display: flex;
 }

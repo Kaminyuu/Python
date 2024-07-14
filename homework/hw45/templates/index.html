@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+
+<ul class="two">
+    {% for c in curses %}
+    <li class="one">
+        <p class="title">{{ c.title }}</p>
+        <p class="cost">{{ c.text }}</p>
+        <div class="text">{{ c.cost }}</div>
+        <div class="back"><a href="{{ url_for('show_curse', id_curse=c.id)}}"><input class="button" type="submit" value="Купить"></a></div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
