@@ -1,0 +1,26 @@
+{% extends 'cities/base.html' %}
+{% load static%}
+{% block content %}
+
+<h1>Достопримечательности Москвы</h1>
+
+<div class="img">
+    <img src="{% static 'cities/moscow.jpeg' %}" alt="">
+</div>
+
+<h2>Список достопримечательностей города:</h2>
+
+<div class="block">
+    {% for attraction in attractions %}
+    <div class="element">
+        <div>
+            <img src="{{ attraction.image.url }}" alt="">
+        </div>
+        <div class="text">
+            <h2>{{ attraction.title }}</h2>
+            <p>{{ attraction.text }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
