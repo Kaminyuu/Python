@@ -22,7 +22,15 @@ from cities import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.cities, name="cities")
+    path('', views.cities, name="cities"),
+    path('sights/', views.sights, name="sights"),
+    path('sights/<int:sights_id>/', views.description, name="description"),
+
+    # Auth
+    path('signup/', views.signup, name="signupuser"),
+    path('logout/', views.logoutuser, name="logoutuser"),
+    path('login/', views.loginuser, name="loginuser"),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,15 @@
+{% extends 'cities/base.html' %}
+{% load static%}
+{% block content %}
+<div class="block">
+    <div class="element">
+        <div class="text">
+            <h2>{{ objects.title }}</h2>
+            <p>{{ objects.text }}</p>
+        </div>
+        <div>
+            <img src="{{ objects.image.url }}" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}

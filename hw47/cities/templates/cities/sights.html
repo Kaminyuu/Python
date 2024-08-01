@@ -1,0 +1,18 @@
+{% extends 'cities/base.html' %}
+{% load static%}
+{% block content %}
+<h1>Топ-10 достопримечательнойстей Москвы</h1>
+<div class="block">
+    {% for sights in sight %}
+    <div class="element">
+        <div>
+            <img src="{{ sights.image.url }}" alt="">
+        </div>
+        <div class="text">
+            <h2><a href="{% url 'description' sights.id %}">{{ sights.title }}</a></h2>
+            <p>{{ sights.text }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -5,3 +5,7 @@ from .models import Skills
 def index(request):
     projects = Skills.objects.all()
     return render(request, 'skills/index.html', {'projects': projects})
+
+
+def detail(request, blog_id):
+    return render(request, 'blog/detail.html')
