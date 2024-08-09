@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
 
 
 def cities(request):
@@ -11,11 +12,13 @@ def cities(request):
     return render(request, 'cities/cities.html', {'attractions': attractions})
 
 
+@login_required
 def sights(request):
     sight = Sights.objects.all()
     return render(request, 'cities/sights.html', {'sight': sight})
 
 
+@login_required
 def description(request, sights_id):
     objects = get_object_or_404(Sights, pk=sights_id)
     return render(request, 'cities/description.html', {'objects': objects})
@@ -39,6 +42,7 @@ def signup(request):
                                                               'error': 'Пароли не совпадают'})
 
 
+@login_required
 def logoutuser(request):
     if request.method == "POST":
         logout(request)
@@ -52,7 +56,7 @@ def loginuser(request):
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
             return render(request, 'cities/loginuser.html', {'form': AuthenticationForm(),
-                                                           'error': "Неверные данные для входа"})
+                                                             'error': "Неверные данные для входа"})
         else:
             login(request, user)
             return redirect('cities')
